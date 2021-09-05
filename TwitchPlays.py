@@ -161,6 +161,35 @@ MOUSE6 = 0x106
 MOUSE7 = 0x107
 MOUSE_WHEEL_UP = 0x108
 MOUSE_WHEEL_DOWN = 0x109
+
+keyDict = {
+    "q": 0x10,
+    "w": 0x11,
+    "e": 0x12,
+    "r": 0x13,
+    "t": 0x14,
+    "y": 0x15,
+    "u": 0x16,
+    "i": 0x17,
+    "o": 0x18,
+    "p": 0x19,
+    "a": 0x1E,
+    "s": 0x1F,
+    "d": 0x20,
+    "f": 0x21,
+    "g": 0x22,
+    "h": 0x23,
+    "k": 0x25,
+    "j": 0x24,
+    "l": 0x26,
+    "z": 0x2C,
+    "x": 0x2D,
+    "c": 0x2E,
+    "v": 0x2F,
+    "b": 0x30,
+    "n": 0x31,
+    "m": 0x32
+}
 ########################################################
 
 # An optional countdown before the code actually starts running, so you have time to load up the game before messages are processed.
@@ -251,17 +280,11 @@ while goon:
                 if msg == "jump":
                     PressAndHoldKey(SPACE, 0.7)
 
-                if msg == "e":
-                    PressAndHoldKey(E, 0.7)
-
-                if msg == "q":
-                    PressAndHoldKey(Q, 0.7)
-
-                if msg == "f":
-                    PressAndHoldKey(F, 0.7)
+                if msg in keyDict:
+                    PressAndHoldKey(keyDict[msg], 0.7)
 
                 # Presses the left mouse button down for 1 second, then releases it
-                if msg == "shoot":
+                if msg == "lmb":
                     mouse.press(Button.left)
                     time.sleep(1)
                     mouse.release(Button.left)
@@ -271,6 +294,21 @@ while goon:
                     mouse.press(Button.right)
                     time.sleep(1)
                     mouse.release(Button.right)
+
+                # Clicks and drags the mouse upwards, using the Pyautogui commands.
+                # NOTE: unfortunately, Pyautogui does not work in DirectX games like GTA V. It will work in all other environments (e.g. on your desktop)
+                # If anyone finds a reliable way to move the mouse in DirectX games, please let me know!
+                if msg == "up":
+                    pyautogui.drag(0, -50, 0.25)
+
+                if msg == "down":
+                    pyautogui.drag(0, 50, 0.25)
+
+                if msg == "left":
+                    pyautogui.drag(-50, 0, 0.25)
+
+                if msg == "right":
+                    pyautogui.drag(50, 0, 0.25)
 
         except:
             # There was some error trying to process this chat message. Simply move on to the next message.

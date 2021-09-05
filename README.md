@@ -38,13 +38,10 @@ THIS SOFTWARE IS PROVIDED  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUD
 ### use (as twitch-chat)
 just type what you want to do.  
 default commands:
-- w
-- a
-- s
-- d
+- w, a, s, d
+- (every other lowercase alphanumeric letter)
 - jump
-- attack (left mouse button)
-- rmb (right mouse button)
-- e
-- q
-- f
+- lmb, rmb (left/ right mouse button)
+- up, down, left, right (mouse)
+
+**Note:** this was made for qwertz keyboard -> z and y might be swapped
